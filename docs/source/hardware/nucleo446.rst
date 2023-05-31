@@ -157,17 +157,17 @@ Wiring the SD Card Module requires it share SPI with our RPI communication SPI.
 You can use the bottom side pins on the morpho header to access the SPI pins for the SD card module
 
 +--------+----------+----------------------+-------------+
-| PIN    | COLOR    |   FUNCTION  	   | SD card PIN     |
+| PIN    | COLOR    |   FUNCTION  	   | SD card PIN |
 +--------+----------+----------------------+-------------+
-| PB_15  | RED      | SPI_MOSI   	   | MOSI  |
+| PB_15  | RED      | SPI_MOSI   	   | MOSI  	 |
 +--------+----------+----------------------+-------------+
-| PB_14  | ORANGE   | SPI_MISO  	   | MISO | 
+| PB_14  | ORANGE   | SPI_MISO  	   | MISO        | 
 +--------+----------+----------------------+-------------+
-| PB_13  | GREEN    | SPI_SCK		   | SCK  | 
+| PB_13  | GREEN    | SPI_SCK		   | SCK         | 
 +--------+----------+----------------------+-------------+
-| PC_4   | YELLOW   | SPI_SSEL  	   | CS  | 
+| PC_4   | YELLOW   | SPI_SSEL  	   | CS          | 
 +--------+----------+----------------------+-------------+
-| 5/3.3v | BROWN    | POWER  	   | 5 or 3.3v | 
+| 5/3.3v | BROWN    | POWER  	           | 5 or 3.3v   | 
 +--------+----------+----------------------+-------------+
 | GND    | BLACK    | GROUND	   	   | GND         | 
 +--------+----------+----------------------+-------------+
