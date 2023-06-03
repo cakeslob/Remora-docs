@@ -249,6 +249,60 @@ The W5500 Ethernet Shields are not *directly* compatiable with the CNC Shield, s
 
 * **NOTE:** Many Arduino W5500 Ethernet Shields to not include a low profile Ethernet port. It may be required that you use the stacking Arduino Headers to raise your CNC Shield enough to clear the Ethernet Port
 
+
+
+KeyStudio W5500 Ethernet Shield and CNC Shield
+------------------------------------------------
+
+.. image:: ../_static/nucleo446_eth2.png
+    :align: center
+
+
+This shield appears to be a clone of the offical Wiz W5500 Ethernet Shield. There are no soldering required to use this board with the CNC Shield, but it is required to use stacking headers to clear the Ethernet Jack and to redirect pins from the CNC Shield. This Shield includes an SD Card slot, which is used for pinout configuration
+
+Following Pins on the CNC shield cannot be connected to the Ethernet Shield
+
++--------+----------+----------------------+-------------+
+| PIN    | COLOR    |   FUNCTION  	   | ETH PIN     |
++--------+----------+----------------------+-------------+
+| PA_5   | GREEN    | ETH_SPI_SCK	   | D13	 |
++--------+----------+----------------------+-------------+
+| PA_6   | ORANGE   | ETH_SPI_MISO   	   | D12	 | 
++--------+----------+----------------------+-------------+
+| PA_7   | RED      | ETH_SPI_MOSI	   | D11	 | 
++--------+----------+----------------------+-------------+
+| PB_6   | YELLOW   | ETH_SPI_CS 	   | D10	 | 
++--------+----------+----------------------+-------------+
+| PB_5   | BLUE     | SD_SPI_CS		   | D4		 | 
++--------+----------+----------------------+-------------+
+
+* Pin D13 is connected to PA_5, it is used by the Ethernet Shield for SPI_SCK, and by the CNC Shield for A dir. 
+ This pin on the CNC Shield cannot be connected to the Ethernet Shild. This Pin can be easily relocated to another pin, using a jumper wire connected from the CNC Shield to the Nucleo Morpho Header. 
+* Pin D12 is connected to PA_6, it is used by the Ethernet Shield for SPI_MISO, and by the CNC Shield for A step. 
+ This pin on the CNC Shield cannot be connected to the Ethernet Shild. This Pin can be easily relocated to another pin, using a jumper wire connected from the CNC Shield to the Nucleo Morpho Header. 
+* Pin D11 is connected to PA_7, which is used by the Ethernet Shield for SPI_MOSI, and by the CNC Shield for Z limit. 
+ You cannot use this pin on the CNC Shield, and it should not be connected to the Ethernet shield. 
+* Pin D10 is connected to PB_6, which is used by the Ethernet Shield for SD_CS, and by the CNC Shield for Y limit. 
+ You cannot use this pin on the CNC Shield, and it should not be connected to the Ethernet shield. 
+* Pin D4 is connected to PB_5, it is used by the Ethernet Shield for ETH_CS, and by the CNC Shield for Z step. 
+ This pin on the CNC Shield cannot be connected to the Ethernet Shild. This Pin can be easily relocated to another pin, using a jumper wire connected from the CNC Shield to the Nucleo Morpho Header. 
+
+**Shield With Stacking Headers, and removed pins.  :** 
+
+.. image:: ../_static/nucleo446/eth5.jpg
+    :align: center
+
+.. image:: ../_static/nucleo446/eth7.jpg
+    :align: center
+
+
+**Shield With Stacking Headers, and Relocated Pins.  :** 
+
+.. image:: ../_static/nucleo446/eth6.jpg
+    :align: center
+
+
+
 Blue Classic "W5500 Ethernet Shield V2.0" clone from aliexpress
 ---------------------------------------------------------------
 
@@ -303,6 +357,10 @@ The other modifaction required is to relocate the pins that are shared on the Ar
 .. image:: ../_static/nucleo446/eth8.jpg
     :align: center
 
+**Shield With Stacking Headers, and Relocated Pins.  :** 
+
+.. image:: ../_static/nucleo446/eth10.jpg
+    :align: center
 	
 
 Serial Communication
