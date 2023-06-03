@@ -104,11 +104,13 @@ The Stepgens and limit switches are configured to match the pins on the grbl cnc
 
 
 Static Configuration : 
+------------------------
 
 The firmware for the Nucleo/CNC shield static configuration is based around the pinout of the CNC shield. This means the setup does not need an SD card to load the configuration, but it also cannot be changed. 
 It is a static configuration, so to change any pinout, it would be required to compile firmware with adjustments. That will not be covered in the scope of this documentation at this time.  You do not need to use all the pins but they included in the firmware.
 
 SD Card Configuration : 
+--------------------------
 
 The firmware for the  Nucleo/CNC shield SD card configuration is more inline with standard Remora firmware. 
 A default configuration based on the CNC shield pinout is provided, but if you do not wish to use the cnc shield, 
@@ -121,6 +123,7 @@ Note : The Nucleo 446 can tolerate 5v but its IO are 3.3v, It may be required th
 
 
 Pinout Considerations :
+----------------------
 
 * The X+ and X- pins are connected to the same Nucleo IO pin
 * The Y+ and Y- pins are connected to the same Nucleo IO pin
