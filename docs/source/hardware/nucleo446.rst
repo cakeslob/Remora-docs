@@ -1,5 +1,5 @@
 Nucleo64 F446 with GRBL 3.x CNC shield
-====================
+====================================
 
 Nucleo64 F446 with GRBL/protoneer 3.x CNC shield with Remora firmware. 
 
@@ -22,17 +22,53 @@ The config includes :
 * 7x inputs for limit switches and buttons
 * 2x outputs  
 * 1x PWM
-* PRU Reset pin
+* PRU Reset pin (Raspberry Pi version)
 
 
 
 Firmware and Config
--------------------
+====================
 
-This firmware is specific to the Nucleo64 F446RE in combination with the classic grbl cnc shield. There are 2 versions of the firmware. One is a static configuration,
-the pinout cannot be changed unless recompiled in the firmware. The second is the SD card configuration firmware, the pinout is configured using an SD card which needs to be connected to the Nucleo SPI pins.
-The Stepgens and limit switches are configured to match the pins on the grbl cnc shield. Hardware related configuration for the grbl shield may be required for some jumper related things. Pins not found on the grbl shield are found on the Nucleo Morpho headers. You do not need to use the cnc shield, but this project is default configured for the cnc shield. 
+This firmware is specific to the Nucleo64 F446RE in combination with the classic grbl cnc shield as its default configuration. There are several versions of the firmware to match the possible communication and configuration hardware variants. For example, SPI Communication with a Static configuration, Ethernet Communication with SD Card configuration, etc. 
 
+Communication Variants :
+-------------------------
+
+* SPI Communication
+	* This firmware is used in conjunction with the Raspberry Pi, it communicates with Linuxcnc via SPI
+
+* Ethernet Communication
+	* This firmware is used in conjunction with the Wiz W5500 SPI-Ethernet chip adapter. It communicates with Linuxcnc via Ethernet and can be used with regular computer hardware. 
+	* This firmware is still in development, documents may change in the future. The firmware provided is the functioning proof of concept firmware. 
+
+
+Cofiguration Variants :
+-------------------------
+
+* SD Card Configuration
+	* The pinout is configured via "config.txt" , which is loaded on the SD card. Pinout can be changed by modifying the file. 
+	* An SD Card module needs to needs to be present to used this feature, and connected to the approiate SPI pins. 
+	* The default config file is configured for the CNC Shield pinout, but can be changed to use other pinouts
+	* **Note** : SD cards running over SPI can be finicky. It is recomended to use an SD card under 1gb
+	* **Note** : The Nucleo 446 can tolerate 5v but its IO are 3.3v, It may be required that your SD module some kind of a resistor
+	
+* Static Configuration 
+	* The pinout is configured with the "board_config.h" file found in the firmware source and compiled with the target. 
+	* To modify the pinout, the configuration needs to be modified in firmware and recompiled. This will not be covered in the documents at this time.
+	* No SD card module is needed.
+	
+
+
+
+Pinout Configuration
+=====================
+
+The Stepgens and limit switches are configured to match the pins on the grbl cnc shield. Hardware related configuration for the grbl shield may be required for some jumper related things. Pins not found on the CNC Shield are found on the Nucleo Morpho headers. You do not need to use the CNC Shield, but this project is default configured for the CNC Shield. 
+
+
+
+CNC Shield Default Pinout Configuration
+----------------------------------------
 
 +--------+------------------------------+----------------+
 | PIN    |   FUNCTION  	 	  	| LinuxCNC PIN   |
@@ -94,32 +130,18 @@ The Stepgens and limit switches are configured to match the pins on the grbl cnc
 | PC_9   | OUTPUT 2			| remora.output.2|
 +--------+------------------------------+----------------+
 
+Arduino Header CNC Shield Pinout
+----------------------------------
 
 .. image:: ../_static/nucleo446_pinout_shield.png
     :align: center
+    
+Nucleo Morpho Pinout
+--------------------
 
 .. image:: ../_static/nucleo446_cnc_pinout.png
     :align: center
-
-
-
-Static Configuration : 
-------------------------
-
-The firmware for the Nucleo/CNC shield static configuration is based around the pinout of the CNC shield. This means the setup does not need an SD card to load the configuration, but it also cannot be changed. 
-It is a static configuration, so to change any pinout, it would be required to compile firmware with adjustments. That will not be covered in the scope of this documentation at this time.  You do not need to use all the pins but they included in the firmware.
-
-SD Card Configuration : 
---------------------------
-
-The firmware for the  Nucleo/CNC shield SD card configuration is more inline with standard Remora firmware. 
-A default configuration based on the CNC shield pinout is provided, but if you do not wish to use the cnc shield, 
-you can configure your pinout to be something else. To use this firmware, you are required to attatch an SD card module, wired as shown below. 
-
-Note : SD cards running over SPI can be finicky. It is recomended to use an SD card under 1gb
-
-Note : The Nucleo 446 can tolerate 5v but its IO are 3.3v, It may be required that your SD module some kind of a resistor
-
+    
 
 
 Pinout Considerations :
