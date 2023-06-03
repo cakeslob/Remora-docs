@@ -14,7 +14,7 @@ Nucleo64-F446RE with Protoneer CNC shield 3.xx
 This document covers running Remora firmware on LinuxCNC with a fixed configuration, and information reguarding the SD card configuration firmware. Information reguarding the configuration of Remora via SD card is covered in detail in the main Remora Documents. 
 This page is specific to the Nucleo64 F446RE hardware. The Firmware is specific to the Nucleo board running the STM32F446RE mcu with a Arduino CNC shield v3.xx as its default configuration.  
 
-The config includes : 
+The config includes, but is not limited to : 
 
 * 4x stepgens for XYZA axis 
 * 3x lower resolution encoders with channels A/B
@@ -176,9 +176,9 @@ Available QEI Encoder Hardware pins:
 
 
 Wiring to SD Module
--------------------
+====================
 
-Wiring the SD Card Module requires it share SPI with our RPI communication SPI. 
+Wiring the SD Card Module requires it share SPI with our SPI Communication  pins. 
 You can use the bottom side pins on the morpho header to access the SPI pins for the SD card module
 
 +--------+----------+----------------------+-------------+
@@ -202,8 +202,8 @@ You can use the bottom side pins on the morpho header to access the SPI pins for
 Nucleo connected to SD Card Module
 
 
-Wiring to Raspberry Pi
-----------------------
+Wiring to Raspberry Pi for SPI Communication
+============================================
 
 Wiring requires the following components:
 
@@ -240,8 +240,75 @@ Nucleo connected to Raspberry Pi 4
     :align: center
 Nucleo to Raspberry Pi 4 schmatic
 
+
+Wiring to W5500 Ethernet Shield for Ethernet Communication
+=========================================================
+
+There are serveral varations of the Arduino W5500 Ethernet Shield, there are several versions of firmware to reflect these differences. 
+The W5500 Ethernet Shields are not *directly* compatiable with the CNC Shield, so some minor modifactions may be required depending on which W5500 Ethernet you are using.
+
+* **NOTE:** Many Arduino W5500 Ethernet Shields to not include a low profile Ethernet port. It may be required that you use the stacking Arduino Headers to raise your CNC Shield enough to clear the Ethernet Port
+
+Blue Classic "W5500 Ethernet Shield V2.0" clone from aliexpress
+---------------------------------------------------------------
+
+.. image:: ../_static/nucleo446_eth1.png
+    :align: center
+
+
+Commonly found on Aliexpress for less than $10, this Ethernet Shield requires the fewest amount of CNC Shield pin relocating, but the most amount of modifications. 
+Generally, these Shields are only using 2 pins from the Arduino Header. The rest of the pins required are found on the Arduino ICSP header, which is not connected to the Nucleo. 
+How you re-route these pins is up to the user. One option is to remove the original female header and re-solder a new one in its place. This Shield also included an SD card Slot, making Remora configuration more flexiable. The SPI connection is relocated from the ICSP header to use SPI2 for communication. 
+
++--------+----------+----------------------+-------------+
+| PIN    | COLOR    |   FUNCTION  	   | ETH PIN     |
++--------+----------+----------------------+-------------+
+| PB_15  | RED      | SPI_MOSI   	   | MOSI ICSP	 |
++--------+----------+----------------------+-------------+
+| PB_14  | ORANGE   | SPI_MISO  	   | MISO ICSP	 | 
++--------+----------+----------------------+-------------+
+| PB_13  | GREEN    | SPI_SCK		   | SCK ICSP	 | 
++--------+----------+----------------------+-------------+
+
+The other modifaction required is to relocate the pins that are shared on the Arduino header between the 2 shields. This clone Ethernet Shield uses a standard height Ethernet jack, so some kind of header extension is required so the board is not shorted from the Ethernet jack. This works in out favor, as we do not need to remove pins from The CNC Shield. The Following Pins on the CNC shield cannot be connected to the Ethernet Shield
+
++--------+----------+----------------------+-------------+
+| PIN    | COLOR    |   FUNCTION  	   | ETH PIN     |
++--------+----------+----------------------+-------------+
+| PB_6   | YELLOW   | ETH_SPI_CS 	   | D10	 | 
++--------+----------+----------------------+-------------+
+| PB_5   | BLUE     | SD_SPI_CS		   | D4		 | 
++--------+----------+----------------------+-------------+
+
+* Pin D4 is connected to PB_5, which is used by the Ethernet Shield for SD_CS, and by the CNC Shield for Y limit. 
+ You cannot use this pin on the CNC Shield, and it should not be connected to the Ethernet shield. 
+* Pin D10 is connected to PB_6, it is used by the Ethernet Shield for SPI_CS, and by the CNC Shield for Z step. 
+ This pin the CNC Shield cannot be connected to the Ethernet Shild. This Pin can be easily relocated to another pin, using a jumper wire connected from the CNC Shield to the Nucleo Morpho Header. 
+
+
+
+**Before ICSP Mod :**
+
+.. image:: ../_static/nucleo446/eth2.jpg
+    :align: center
+
+**After ICSP Mod :** 
+
+.. image:: ../_static/nucleo446/eth3.jpg
+    :align: center
+
+
+**Shield With Stacking Headers, and removed pins.  :** 
+
+.. image:: ../_static/nucleo446/eth8.jpg
+    :align: center
+
 	
-To UART from the Raspberry Pi to the Nucleo, you can use the usb port on the Nucleo to RPI usb
+
+Serial Communication
+=====================
+
+To USART from the Raspberry Pi to the Nucleo, you can use the usb port on the Nucleo to RPI usb. If you with to use UART on pins PA2/PA3, please refer to the Nucleo usermanual/datasheet. This is currently not supported in the firmware. 
 
 
 
