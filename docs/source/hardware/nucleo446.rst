@@ -249,6 +249,7 @@ Wiring to W5500 Ethernet Shield for Ethernet Communication
 
 There are serveral varations of the Arduino W5500 Ethernet Shield, there are several versions of firmware to reflect these differences. 
 The W5500 Ethernet Shields are not *directly* compatiable with the CNC Shield, so some minor modifaction/pin-relocation depending on which W5500 Ethernet you are using.
+Relocating the pin is rather rudamentary task, from a wiring and configuration standpoint. The Ethernet Shields covered in the document have SD card slots, which makes configuration easy and dynamic. 
 
 * **NOTE:** Many Arduino W5500 Ethernet Shields to not include a low profile Ethernet port. It may be required that you use the stacking Arduino Headers to raise your CNC Shield enough to clear the Ethernet Port
 
