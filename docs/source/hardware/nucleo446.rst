@@ -201,7 +201,7 @@ You can use the bottom side pins on the morpho header to access the SPI pins for
     :align: center
 Nucleo connected to SD Card Module
 
-.. image:: ../_static/nucleo446/sd2.png
+.. image:: ../_static/nucleo446/sd2.jpg
     :align: center
 Possible way to bend pins for SD Card Module
 
