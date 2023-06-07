@@ -1,7 +1,7 @@
-Nucleo64 F446 with GRBL 3.x CNC shield
+Nucleo64 F446 with Arduino 3.x CNC shield
 ====================================
 
-Nucleo64 F446 with GRBL/protoneer 3.x CNC shield with Remora firmware. 
+Nucleo64 F446 with Arduino/protoneer 3.x CNC shield with Remora firmware. 
 
 
 
@@ -29,7 +29,7 @@ The config includes, but is not limited to :
 Firmware and Config
 ====================
 
-This firmware is specific to the Nucleo64 F446RE in combination with the classic grbl cnc shield as its default configuration. There are several versions of the firmware to match the possible communication and configuration hardware variants. For example, SPI Communication with a Static configuration, Ethernet Communication with SD Card configuration, etc. 
+This firmware is specific to the Nucleo64 F446RE in combination with the classic  cnc shield as its default configuration. There are several versions of the firmware to match the possible communication and configuration hardware variants. For example, SPI Communication with a Static configuration, Ethernet Communication with SD Card configuration, etc. 
 
 Communication Variants :
 -------------------------
@@ -63,7 +63,7 @@ Cofiguration Variants :
 Pinout Configuration
 =====================
 
-The Stepgens and limit switches are configured to match the pins on the grbl cnc shield. Hardware related configuration for the grbl shield may be required for some jumper related things. Pins not found on the CNC Shield are found on the Nucleo Morpho headers. You do not need to use the CNC Shield, but this project is default configured for the CNC Shield. 
+The Stepgens and limit switches are configured to match the pins on the CNC Shield. Hardware related configuration for the CNC Shield may be required for some jumper related things. Pins not found on the CNC Shield are found on the Nucleo Morpho headers. You do not need to use the CNC Shield, but this project is default configured for the CNC Shield. 
 
 
 
@@ -201,6 +201,9 @@ You can use the bottom side pins on the morpho header to access the SPI pins for
     :align: center
 Nucleo connected to SD Card Module
 
+.. image:: ../_static/nucleo446/sd2.png
+    :align: center
+Possible way to bend pins for SD Card Module
 
 Wiring to Raspberry Pi for SPI Communication
 ============================================
