@@ -279,15 +279,15 @@ Following Pins on the CNC shield cannot be connected to the Ethernet Shield
 | PB_5   | BLUE     | SD_SPI_CS		   | D4		 | 
 +--------+----------+----------------------+-------------+
 
-* Pin D13 is connected to PA_5, it is used by the Ethernet Shield for SPI_SCK, and by the CNC Shield for A dir. 
+* Pin D13 is connected to PA_5, it is used by the Ethernet Shield for SPI_SCK, and by the CNC Shield for A DIR. 
  This pin on the CNC Shield cannot be connected to the Ethernet Shild. This Pin can be easily relocated to another pin, using a jumper wire connected from the CNC Shield to the Nucleo Morpho Header. 
-* Pin D12 is connected to PA_6, it is used by the Ethernet Shield for SPI_MISO, and by the CNC Shield for A step. 
+* Pin D12 is connected to PA_6, it is used by the Ethernet Shield for SPI_MISO, and by the CNC Shield for A STEP. 
  This pin on the CNC Shield cannot be connected to the Ethernet Shild. This Pin can be easily relocated to another pin, using a jumper wire connected from the CNC Shield to the Nucleo Morpho Header. 
-* Pin D11 is connected to PA_7, which is used by the Ethernet Shield for SPI_MOSI, and by the CNC Shield for Z limit. 
+* Pin D11 is connected to PA_7, which is used by the Ethernet Shield for SPI_MOSI, and by the CNC Shield for Z LIMIT. 
  You cannot use this pin on the CNC Shield, and it should not be connected to the Ethernet shield. 
-* Pin D10 is connected to PB_6, which is used by the Ethernet Shield for SD_CS, and by the CNC Shield for Y limit. 
+* Pin D10 is connected to PB_6, which is used by the Ethernet Shield for SD_CS, and by the CNC Shield for Y LIMIT. 
  You cannot use this pin on the CNC Shield, and it should not be connected to the Ethernet shield. 
-* Pin D4 is connected to PB_5, it is used by the Ethernet Shield for ETH_CS, and by the CNC Shield for Z step. 
+* Pin D4 is connected to PB_5, it is used by the Ethernet Shield for ETH_CS, and by the CNC Shield for Z STEP. 
  This pin on the CNC Shield cannot be connected to the Ethernet Shild. This Pin can be easily relocated to another pin, using a jumper wire connected from the CNC Shield to the Nucleo Morpho Header. 
 
 **Shield With Stacking Headers, and removed pins.  :** 
@@ -337,9 +337,9 @@ The other modifaction required is to relocate the pins that are shared on the Ar
 | PB_5   | BLUE     | SD_SPI_CS		   | D4		 | 
 +--------+----------+----------------------+-------------+
 
-* Pin D4 is connected to PB_5, which is used by the Ethernet Shield for SD_CS, and by the CNC Shield for Y limit. 
+* Pin D4 is connected to PB_5, which is used by the Ethernet Shield for SD_CS, and by the CNC Shield for Y LIMIT. 
  You cannot use this pin on the CNC Shield, and it should not be connected to the Ethernet shield. 
-* Pin D10 is connected to PB_6, it is used by the Ethernet Shield for SPI_CS, and by the CNC Shield for Z step. 
+* Pin D10 is connected to PB_6, it is used by the Ethernet Shield for SPI_CS, and by the CNC Shield for Z STEP. 
  This pin the CNC Shield cannot be connected to the Ethernet Shild. This Pin can be easily relocated to another pin, using a jumper wire connected from the CNC Shield to the Nucleo Morpho Header. 
 
 
