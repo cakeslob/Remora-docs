@@ -150,7 +150,7 @@ Pinout Considerations :
 * The X+ and X- pins are connected to the same Nucleo IO pin
 * The Y+ and Y- pins are connected to the same Nucleo IO pin
 * The Z+ and Z- pins are connected to the same Nucleo IO pin
-* The SpnEn and SpnDir pins are connected to the same Nucleo IO pin as A axis step and dir
+* The SpnEn and SpnDir pins are connected to the same Nucleo IO pin as A-axis STEP and DIR
 * The E-STOP pin is connected to the mcu reset pin. I do not recoment using it as an estop pin. 
 
 .. image:: ../_static/nucleo446_cnc_pinout2.png
