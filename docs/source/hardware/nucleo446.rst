@@ -248,7 +248,7 @@ Wiring to W5500 Ethernet Shield for Ethernet Communication
 =========================================================
 
 There are serveral varations of the Arduino W5500 Ethernet Shield, there are several versions of firmware to reflect these differences. 
-The W5500 Ethernet Shields are not *directly* compatiable with the CNC Shield, so some minor modifactions may be required depending on which W5500 Ethernet you are using.
+The W5500 Ethernet Shields are not *directly* compatiable with the CNC Shield, so some minor modifaction/pin-relocation depending on which W5500 Ethernet you are using.
 
 * **NOTE:** Many Arduino W5500 Ethernet Shields to not include a low profile Ethernet port. It may be required that you use the stacking Arduino Headers to raise your CNC Shield enough to clear the Ethernet Port
 
@@ -314,7 +314,7 @@ Blue Classic "W5500 Ethernet Shield V2.0" clone from aliexpress
 
 
 Commonly found on Aliexpress for less than $10, this Ethernet Shield requires the fewest amount of CNC Shield pin relocating, but the most amount of modifications. 
-Generally, these Shields are only using 2 pins from the Arduino Header. The rest of the pins required are found on the Arduino ICSP header, which is not connected to the Nucleo. 
+Generally, these Shields are only using 2 pins from the Arduino Header. **The rest of the pins required are found on the Arduino ICSP header, which is not connected to the Nucleo.**
 How you re-route these pins is up to the user. One option is to remove the original female header and re-solder a new one in its place. This Shield also included an SD card Slot, making Remora configuration more flexiable. The SPI connection is relocated from the ICSP header to use SPI2 for communication. 
 
 +--------+----------+----------------------+-------------+
