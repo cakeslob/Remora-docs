@@ -37,9 +37,10 @@ Communication Variants :
 * SPI Communication
 	* This firmware is used in conjunction with the Raspberry Pi, it communicates with Linuxcnc via SPI
 
-* Ethernet Communication
+* Ethernet Communication - **IN DEVELOPMENT**
 	* This firmware is used in conjunction with the Wiz W5500 SPI-Ethernet chip adapter. It communicates with Linuxcnc via Ethernet and can be used with regular computer hardware. 
 	* This firmware is still in development, documents may change in the future. The firmware provided is the functioning proof of concept firmware. 
+	
 
 
 Cofiguration Variants :
@@ -244,127 +245,7 @@ Nucleo connected to Raspberry Pi 4
 Nucleo to Raspberry Pi 4 schmatic
 
 
-Wiring to W5500 Ethernet Shield for Ethernet Communication
-=========================================================
 
-There are serveral varations of the Arduino W5500 Ethernet Shield, there are several versions of firmware to reflect these differences. 
-The W5500 Ethernet Shields are not *directly* compatiable with the CNC Shield, so some minor modifaction/pin-relocation depending on which W5500 Ethernet you are using.
-Relocating the pin is rather rudamentary task, from a wiring and configuration standpoint. The Ethernet Shields covered in the document have SD card slots, which makes configuration easy and dynamic. 
-
-* **NOTE:** Many Arduino W5500 Ethernet Shields to not include a low profile Ethernet port. It may be required that you use the stacking Arduino Headers to raise your CNC Shield enough to clear the Ethernet Port
-
-
-
-KeyStudio W5500 Ethernet Shield and CNC Shield
-------------------------------------------------
-
-.. image:: ../_static/nucleo446_eth2.png
-    :align: center
-
-
-This shield appears to be a clone of the offical Wiz W5500 Ethernet Shield. There are no soldering required to use this board with the CNC Shield, but it is required to use stacking headers to clear the Ethernet Jack and to redirect pins from the CNC Shield. This Shield includes an SD Card slot, which is used for pinout configuration
-
-Following Pins on the CNC shield cannot be connected to the Ethernet Shield
-
-+--------+----------+----------------------+-------------+
-| PIN    | COLOR    |   FUNCTION  	   | ETH PIN     |
-+--------+----------+----------------------+-------------+
-| PA_5   | GREEN    | ETH_SPI_SCK	   | D13	 |
-+--------+----------+----------------------+-------------+
-| PA_6   | ORANGE   | ETH_SPI_MISO   	   | D12	 | 
-+--------+----------+----------------------+-------------+
-| PA_7   | RED      | ETH_SPI_MOSI	   | D11	 | 
-+--------+----------+----------------------+-------------+
-| PB_6   | YELLOW   | ETH_SPI_CS 	   | D10	 | 
-+--------+----------+----------------------+-------------+
-| PB_5   | BLUE     | SD_SPI_CS		   | D4		 | 
-+--------+----------+----------------------+-------------+
-
-* Pin D13 is connected to PA_5, it is used by the Ethernet Shield for SPI_SCK, and by the CNC Shield for A DIR. 
- This pin on the CNC Shield cannot be connected to the Ethernet Shild. This Pin can be easily relocated to another pin, using a jumper wire connected from the CNC Shield to the Nucleo Morpho Header. 
-* Pin D12 is connected to PA_6, it is used by the Ethernet Shield for SPI_MISO, and by the CNC Shield for A STEP. 
- This pin on the CNC Shield cannot be connected to the Ethernet Shild. This Pin can be easily relocated to another pin, using a jumper wire connected from the CNC Shield to the Nucleo Morpho Header. 
-* Pin D11 is connected to PA_7, which is used by the Ethernet Shield for SPI_MOSI, and by the CNC Shield for Z LIMIT. 
- You cannot use this pin on the CNC Shield, and it should not be connected to the Ethernet shield. 
-* Pin D10 is connected to PB_6, which is used by the Ethernet Shield for SD_CS, and by the CNC Shield for Y LIMIT. 
- You cannot use this pin on the CNC Shield, and it should not be connected to the Ethernet shield. 
-* Pin D4 is connected to PB_5, it is used by the Ethernet Shield for ETH_CS, and by the CNC Shield for Z STEP. 
- This pin on the CNC Shield cannot be connected to the Ethernet Shild. This Pin can be easily relocated to another pin, using a jumper wire connected from the CNC Shield to the Nucleo Morpho Header. 
-
-**Shield With Stacking Headers, and removed pins.  :** 
-
-.. image:: ../_static/nucleo446/eth5.jpg
-    :align: center
-
-.. image:: ../_static/nucleo446/eth7.jpg
-    :align: center
-
-
-**Shield With Stacking Headers, and Relocated Pins.  :** 
-
-.. image:: ../_static/nucleo446/eth6.jpg
-    :align: center
-
-
-
-Blue Classic "W5500 Ethernet Shield V2.0" clone from aliexpress
----------------------------------------------------------------
-
-.. image:: ../_static/nucleo446_eth1.png
-    :align: center
-
-
-Commonly found on Aliexpress for less than $10, this Ethernet Shield requires the fewest amount of CNC Shield pin relocating, but the most amount of modifications. 
-Generally, these Shields are only using 2 pins from the Arduino Header. **The rest of the pins required are found on the Arduino ICSP header, which is not connected to the Nucleo.**
-How you re-route these pins is up to the user. One option is to remove the original female header and re-solder a new one in its place. This Shield also included an SD card Slot, making Remora configuration more flexiable. The SPI connection is relocated from the ICSP header to use SPI2 for communication. 
-
-+--------+----------+----------------------+-------------+
-| PIN    | COLOR    |   FUNCTION  	   | ETH PIN     |
-+--------+----------+----------------------+-------------+
-| PB_15  | RED      | SPI_MOSI   	   | MOSI ICSP	 |
-+--------+----------+----------------------+-------------+
-| PB_14  | ORANGE   | SPI_MISO  	   | MISO ICSP	 | 
-+--------+----------+----------------------+-------------+
-| PB_13  | GREEN    | SPI_SCK		   | SCK ICSP	 | 
-+--------+----------+----------------------+-------------+
-
-The other modifaction required is to relocate the pins that are shared on the Arduino header between the 2 shields. This clone Ethernet Shield uses a standard height Ethernet jack, so some kind of header extension is required so the board is not shorted from the Ethernet jack. This works in out favor, as we do not need to remove pins from The CNC Shield. The Following Pins on the CNC shield cannot be connected to the Ethernet Shield
-
-+--------+----------+----------------------+-------------+
-| PIN    | COLOR    |   FUNCTION  	   | ETH PIN     |
-+--------+----------+----------------------+-------------+
-| PB_6   | YELLOW   | ETH_SPI_CS 	   | D10	 | 
-+--------+----------+----------------------+-------------+
-| PB_5   | BLUE     | SD_SPI_CS		   | D4		 | 
-+--------+----------+----------------------+-------------+
-
-* Pin D4 is connected to PB_5, which is used by the Ethernet Shield for SD_CS, and by the CNC Shield for Y LIMIT. 
- You cannot use this pin on the CNC Shield, and it should not be connected to the Ethernet shield. 
-* Pin D10 is connected to PB_6, it is used by the Ethernet Shield for SPI_CS, and by the CNC Shield for Z STEP. 
- This pin the CNC Shield cannot be connected to the Ethernet Shild. This Pin can be easily relocated to another pin, using a jumper wire connected from the CNC Shield to the Nucleo Morpho Header. 
-
-
-
-**Before ICSP Mod :**
-
-.. image:: ../_static/nucleo446/eth2.jpg
-    :align: center
-
-**After ICSP Mod :** 
-
-.. image:: ../_static/nucleo446/eth3.jpg
-    :align: center
-
-
-**Shield With Stacking Headers, and removed pins.  :** 
-
-.. image:: ../_static/nucleo446/eth8.jpg
-    :align: center
-
-**Shield With Stacking Headers, and Relocated Pins.  :** 
-
-.. image:: ../_static/nucleo446/eth10.jpg
-    :align: center
 	
 
 Serial Communication
