@@ -193,7 +193,7 @@ You can use the bottom side pins on the morpho header to access the SPI pins for
 +--------+----------+----------------------+-------------+
 | PC_4   | YELLOW   | SPI_SSEL  	   | CS          | 
 +--------+----------+----------------------+-------------+
-| 5/3.3v | BROWN    | POWER  	           | 5 or 3.3v   | 
+| 5/3.3v | WHITE    | POWER  	           | 5 or 3.3v   | 
 +--------+----------+----------------------+-------------+
 | GND    | BLACK    | GROUND	   	   | GND         | 
 +--------+----------+----------------------+-------------+
