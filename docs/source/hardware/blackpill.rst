@@ -45,7 +45,12 @@ Communication Variants :
 
 Loading firmware  :
 -------------------------
+**Note** : This document will not cover the steps for loading firmware. It is a standard affair with many other guides online. 
 
+There are 2 ways to load the firmware
+
+* DFU via USBC
+* STLINK (prefered) 
 
 Pinout Configuration
 =====================
