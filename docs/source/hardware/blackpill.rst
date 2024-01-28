@@ -168,6 +168,15 @@ DB25 Default Pinout Configuration
     :align: center
 
 
+
+RPi 5v Power Jumper
+---------------------
+
+The CNC board provides the option to power the board via RPi 5v header pins or external. If you wish to power the board from an external 5v source, or you are uasing the blackpill USBc, remove the jumper. The jumper is found in different locations for each board, but will be marked " RPI 5v PWR JPR"
+
+.. image:: ../_static/blackpill_jpr.png
+    :align: center
+
 Hardware Pins
 -------------
 Remora firmware has some features available only on specific hardware pins. These pins can vary between STM32 boards.
