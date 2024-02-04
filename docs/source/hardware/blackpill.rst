@@ -6,7 +6,7 @@ STM32F4x1 Blackpill CNC board with Remora firmware.
 
 
 	
-.. image:: ../_static/nucleo446_cnc.png
+.. image:: ../_static/cncboard1a.jpg
     :align: center
 
 STM32F4x1 with CNC board
