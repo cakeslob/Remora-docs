@@ -38,6 +38,11 @@ Communication Variants :
 	* The pinout is configured with the "board_config.h" file found in the firmware source and compiled with the target. 
 	* To modify the pinout, the configuration needs to be modified in firmware and recompiled. This will not be covered in the documents at this time.
 
+* SPI Communication with SD card Configuration 
+	* This firmware is used in conjunction with the Raspberry Pi, it communicates with Linuxcnc via SPI
+	* The pinout is configured with a "config.txt" file which is stored on an SD card and inmserted intothe board. 
+	* To modify the pinout, remove SD card and modify file. It is the same as stadard Remora SPI firmware
+
 * Ethernet Communication with TFTP Upload- **IN DEVELOPMENT**
 	* This firmware is used in conjunction with the Wiz W5500 SPI-Ethernet chip adapter. It communicates with Linuxcnc via Ethernet and can be used with regular computer hardware. 
 	* This firmware is still in development, documents may change in the future. The firmware provided is the functioning proof of concept firmware. 
@@ -184,20 +189,20 @@ If you are using the SD config firmware, you can configure the pins different th
 
 Available PWM Hardware pins:
 
--  PA_1 PA_2 PA_3 PA_5 PA_6 PA_7 PA_8  PA_9 PA_10 PA_11 PA_15
+- PA_1 PA_2 PA_3 PA_5 PA_6 PA_7 PA_8  PA_9 PA_10 PA_11 PA_15
 - PB_0 PB_1 PB_3 PB_4 PB_5 PB_6 PB_7 PB_8 PB_9 PB_10 PB_11 
 - PC_6 PC_7 PC_8 PC_9
 
 
 Available QEI Encoder Hardware pins:
 
-- PB_8
-- PB_9
-- PB_7 is used as Z/index
+- PA_15
+- PA_1
+- PA_2 is used as Z/index
 
 
 
-Wiring to Raspberry Pi for SPI Communication
+Wiring to Raspberry Pi/W5500 for SPI Communication
 ============================================
 
 
@@ -212,7 +217,7 @@ Wiring to Raspberry Pi for SPI Communication
 +--------+----------+----------------------+-------------+
 | PB_12  | YELLOW   | SPI_SSEL  	   | RPI_PIN_24  | 
 +--------+----------+----------------------+-------------+
-| PB_5   | BROWN    | PRU Reset	  	   | RPI_PIN_22  | 
+| PB_5   | BROWN    | PRU/W5500 Reset  	   | RPI_PIN_22  | 
 +--------+----------+----------------------+-------------+
 | GND    | BLACK    | GROUND	   	   | GND         | 
 +--------+----------+----------------------+-------------+
@@ -222,8 +227,29 @@ Wiring to Raspberry Pi for SPI Communication
 +--------+----------+----------------------+-------------+
 
 
+SD Card SPI Communication
+============================================
+
+
++--------+----------+----------------------+
+| PIN    | COLOR    |   FUNCTION  	   |
++--------+----------+----------------------+
+| PB_15  | RED      | SD_MOSI   	   |
++--------+----------+----------------------+
+| PB_14  | ORANGE   | SD_MISO	  	   | 
++--------+----------+----------------------+
+| PB_13  | GREEN    | SD_SCK		   |
++--------+----------+----------------------+
+| PA_0   | YELLOW   | SD_SSEL	  	   |
++--------+----------+----------------------+
+| GND    | BLACK    | GROUND	   	   |
++--------+----------+----------------------+
+| V3.3   | WHITE    | 3.3v power   	   |
++--------+----------+----------------------+
+
+
 	
 
 Serial Communication
 =====================
-UART to the CNC board is PA9/PA10
+UART to the CNC board is PA9/PA10. It is connected to the RPi thhrough the 40 pin header, or through the 4 pin serial connector. You can use this to read serial output from the board, using a program like cutecom or minicom. 
