@@ -60,7 +60,7 @@ The Stepgens and limit switches are configured to match the pins on the CNC boar
 
 
 
-CNC Shield Default Pinout Configuration
+StepStick v0.1 Pinout Configuration
 ----------------------------------------
 
 +--------+------------------------------+----------------+
@@ -113,7 +113,7 @@ CNC Shield Default Pinout Configuration
     :align: center
     
 
-DB25 Default Pinout Configuration
+DB25 v0.1 Pinout Configuration
 ----------------------------------------
 
 +--------+------------------------------+----------------+
