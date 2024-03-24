@@ -69,47 +69,45 @@ StepStick v0.1 Pinout Configuration
 ----------------------------------------
 
 +--------+------------------------------+----------------+
-| PIN    |   FUNCTION  	 	  	| LinuxCNC PIN   |
+| PIN    | FUNCTION			| LinuxCNC PIN   |
 +--------+------------------------------+----------------+
-| PA_1   |	X AXIS STEP 		| remora.joint.0 |
+| PA_4   | X AXIS STEP 			| remora.joint.0 |
 +--------+------------------------------+----------------+
-| PA_2   | X AXIS DIR  			| remora.joint.0 | 
+| PA_3   | X AXIS DIR  			| remora.joint.0 | 
 +--------+------------------------------+----------------+
-| PA_3   | Y AXIS STEPGEN   	 	| remora.joint.1 | 
+| PA_6   | Y AXIS STEPGEN   	 	| remora.joint.1 | 
 +--------+------------------------------+----------------+
-| PA_4   | Y AXIS DIR    		| remora.joint.1 | 
+| PA_5   | Y AXIS DIR    		| remora.joint.1 | 
 +--------+------------------------------+----------------+
-| PA_5   | Z AXIS STEPGEN 		| remora.joint.2 | 
+| PB_1   | Z AXIS STEPGEN 		| remora.joint.2 | 
 +--------+------------------------------+----------------+
-| PA_6   | Z AXIS DIR     	  	| remora.joint.2 | 
+| PA_7   | Z AXIS DIR     	  	| remora.joint.2 | 
 +--------+------------------------------+----------------+
-| PB_8   | QEI  ENCODER CHANNEL A	| remora.PV.5    | 
+| PA_15  | QEI  ENCODER CHANNEL A	| remora.PV.5    | 
 +--------+------------------------------+----------------+
-| PB_9   | QEI ENCODER CHANNEL B	| remora.PV.5    | 
+| PA_1   | QEI ENCODER CHANNEL B	| remora.PV.5    | 
 +--------+------------------------------+----------------+
-| PB_7   | QEI ENCODER CHANNEL INDEX	| remora.input.15| 
+| PA_2   | QEI ENCODER CHANNEL INDEX	| remora.input.15| 
 +--------+------------------------------+----------------+
 | PB_0   | PWM OUTPUT 			| remora.SP.0  	 | 
 +--------+------------------------------+----------------+
-| PC_14  | X-LIMIT			| remora.input.0 |
+| PB_9   | X-LIMIT			| remora.input.0 |
 +--------+------------------------------+----------------+
-| PC_15  | Y-LIMIT 			| remora.input.1 |
+| PB_8   | Y-LIMIT 			| remora.input.1 |
 +--------+------------------------------+----------------+
-| PA_15  | Z-LIMIT			| remora.input.2 |
+| PB_7   | Z-LIMIT			| remora.input.2 |
 +--------+------------------------------+----------------+
-| PB_3   | IN1				| remora.input.3 |
+| PB_6   | IN1				| remora.input.3 |
 +--------+------------------------------+----------------+
 | PB_4   | IN2				| remora.input.4 |
 +--------+------------------------------+----------------+
-| PB_6   | IN3				| remora.input.5 |
+| PB_3   | IN3				| remora.input.5 |
 +--------+------------------------------+----------------+
-| PA_0   | USR_BTN			| remora.input.6 |
+| PB_2   | STEPPER ENABLE	  	| remora.output.0| 
 +--------+------------------------------+----------------+
-| PA_7   | STEPPER ENABLE	  	| remora.output.0| 
+| PC_13  | OUTPUT 1			| remora.output.1|
 +--------+------------------------------+----------------+
-| PB_1   | OUTPUT 1			| remora.output.1|
-+--------+------------------------------+----------------+
-| PB_2   | OUTPUT 2			| remora.output.2|
+| PB_10  | OUTPUT 2			| remora.output.2|
 +--------+------------------------------+----------------+
 
 
@@ -123,7 +121,7 @@ DB25 v0.1 Pinout Configuration
 
 +--------+------------------------------+----------------+
 | PIN    |   FUNCTION  	 	  	| LinuxCNC PIN   |
-+--------+------------------------------+----------------+
++========+==============================+================+
 | PA_1   |	X AXIS STEP 		| remora.joint.0 |
 +--------+------------------------------+----------------+
 | PA_2   |	X AXIS DIR  		| remora.joint.0 | 
