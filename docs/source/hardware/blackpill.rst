@@ -73,15 +73,15 @@ StepStick v0.1 Pinout Configuration
 +--------+------------------------------+----------------+
 | PA_1   |	X AXIS STEP 		| remora.joint.0 |
 +--------+------------------------------+----------------+
-| PA_2   |	X AXIS DIR  		| remora.joint.0 | 
+| PA_2   | X AXIS DIR  			| remora.joint.0 | 
 +--------+------------------------------+----------------+
-| PA_3   | 	Y AXIS STEPGEN    	| remora.joint.1 | 
+| PA_3   | Y AXIS STEPGEN   	 	| remora.joint.1 | 
 +--------+------------------------------+----------------+
-| PA_4   |	Y AXIS DIR    		| remora.joint.1 | 
+| PA_4   | Y AXIS DIR    		| remora.joint.1 | 
 +--------+------------------------------+----------------+
-| PA_5   | 	Z AXIS STEPGEN 		| remora.joint.2 | 
+| PA_5   | Z AXIS STEPGEN 		| remora.joint.2 | 
 +--------+------------------------------+----------------+
-| PA_6   |	Z AXIS DIR     	  	| remora.joint.2 | 
+| PA_6   | Z AXIS DIR     	  	| remora.joint.2 | 
 +--------+------------------------------+----------------+
 | PB_8   | QEI  ENCODER CHANNEL A	| remora.PV.5    | 
 +--------+------------------------------+----------------+
