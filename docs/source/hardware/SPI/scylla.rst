@@ -20,14 +20,14 @@ Remora Details
 | **LinuxCNC Driver:**      "remora-spi"
 | **PRU Base Frequency:** 40000 - 80000
 | **Supported Modules:**    
+* stepgen
+* TMC 2208,2209 UART and 5160 SPI driver config
+* digital IO
+* blink
 
 
 Firmware
 -------------------
-The Scylla has several different versions. 
-
-Firmware is loaded by putting the approiate firmware on the SD card, and the bootloader will install it from the SD card
-
 
 
 In your .hal file, you will need to load the Remora driver
@@ -60,12 +60,7 @@ The Scylla board is equiped with an RS485 converter for spindle control. It can 
 
 Wiring
 ------
-The wiring for both versions are the same, except UART is in a different location.
-Wiring requires the following components:
-
-* 100mm Female-Female Dupont ribbon jumper
-* 10 way (2x5) Dupont connector
-* 8 way (2x4) Dupont connector
+The SPI cable for the Scylla needs to be less than 150mm/6 inches in length. 100mm is recomended. 
 
 
 +--------+----------+----------------------+-------------+
@@ -73,17 +68,19 @@ Wiring requires the following components:
 +--------+----------+----------------------+-------------+
 | PB_15  | RED      | SPI_MOSI   	   | RPI_PIN_19  |
 +--------+----------+----------------------+-------------+
+|  GND   | BLACK    | GROUND    	   | RPI_PIN_19  |
++--------+----------+----------------------+-------------+
 | PB_14  | ORANGE   |  SPI_MISO 	   | RPI_PIN_21  | 
++--------+----------+----------------------+-------------+
+| PB_10  | BROWN    | PRU Reset	  	   | RPI_PIN_22  | 
 +--------+----------+----------------------+-------------+
 | PB_13  | GREEN    | SPI_SCK		   | RPI_PIN_23  | 
 +--------+----------+----------------------+-------------+
 | PB_12  | YELLOW   |  SPI_SSEL  	   | RPI_PIN_24  | 
 +--------+----------+----------------------+-------------+
-| PB_10  | BROWN    | PRU Reset	  	   | RPI_PIN_22  | 
+| PA_9   | PURPLE   | 485 TX to RPI RXD    | RPI_PIN_xx  |
 +--------+----------+----------------------+-------------+
-| PD_8   | PURPLE   | MCU TX to RPI RXD    | RPI_PIN_10  |
-+--------+----------+----------------------+-------------+
-| PD_9   | GREY     | MCU RX to RPI TXD    | RPI_PIN_8   |
+| PA_10  | GREY     | 485 RX to RPI TXD    | RPI_PIN_xx  |
 +--------+----------+----------------------+-------------+
 
 
@@ -94,11 +91,11 @@ Wiring requires the following components:
 
 BTT Scylla 
 	
-To UART from the Raspberry Pi to the Scylla the follwoing components are requried:
-
-* 150mm or 200mm Female-Female Dupont ribbon jumper
-* 5 way (1x5) Dupont connector
-* 5 way (1x5) Dupont connector
++--------+----------+----------------------+-------------+
+| PD_8   | PURPLE   | MCU TX to RPI RXD    | RPI_PIN_10  |
++--------+----------+----------------------+-------------+
+| PD_9   | GREY     | MCU RX to RPI TXD    | RPI_PIN_8   |
++--------+----------+----------------------+-------------+
 
 	
 .. image:: ../../_static/scylla_uart.png
@@ -107,3 +104,5 @@ To UART from the Raspberry Pi to the Scylla the follwoing components are requrie
 Scylla v1.1
 
 The diagram above includes the optional serial debug interface. Note that TX <-> RXD and RX <-> TXD.
+
+
